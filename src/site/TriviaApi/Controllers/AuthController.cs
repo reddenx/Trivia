@@ -44,7 +44,7 @@ namespace TriviaApi.Controllers
             //since I didn't bother building the service yet, here's some hardcoded nonsense
             if (input.Username == "admin" && input.Password == "1234")
             {
-                var principal = AuthorizationContextAccessor.CreateUserContext(-1, "admin", new string[] { AuthRoles.Admin });
+                var principal = AuthorizationContextAccessor.CreateUserContext(Guid.NewGuid().ToString("N"), "admin", new string[] { AuthRoles.Admin });
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
                 return NoContent();
             }

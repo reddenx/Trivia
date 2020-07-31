@@ -24,7 +24,7 @@ namespace TriviaApi.Security
                 return new AuthorizedUser(
                     username: name.Value,
                     roles: roles.Select(r => r.Value).ToArray(),
-                    accountId: int.Parse(accountId.Value));
+                    accountId: accountId.Value);
             }
             else
             {
@@ -32,12 +32,12 @@ namespace TriviaApi.Security
             }
         }
 
-        public static ClaimsPrincipal CreateUserContext(int accountId, string username, string[] roles)
+        public static ClaimsPrincipal CreateUserContext(string accountId, string username, string[] roles)
         {
             var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
 
             identity.AddClaim(new Claim(ClaimTypes.Name, username));
-            identity.AddClaim(new Claim(AccountIdClaimString, accountId.ToString()));
+            identity.AddClaim(new Claim(AccountIdClaimString, accountId));
             
             foreach(var role in roles)
             {
@@ -52,10 +52,10 @@ namespace TriviaApi.Security
         {
             public string Username { get; }
             public string[] Roles { get; }
-            public int AccountId { get; }
+            public string AccountId { get; }
 
 
-            public AuthorizedUser(string username, string[] roles, int accountId)
+            public AuthorizedUser(string username, string[] roles, string accountId)
             {
                 Username = username;
                 Roles = roles;

@@ -7,7 +7,7 @@ namespace TriviaApi.Security
 {
     public interface IAuthorizedUser
     {
-        int AccountId { get; }
+        string AccountId { get; }
         string Username { get; }
         string[] Roles { get; }
     }
