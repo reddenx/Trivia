@@ -21,6 +21,11 @@ namespace TriviaApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .UseDefaultServiceProvider((context, options) =>
+                {
+                    //options.vali
+                    options.ValidateOnBuild = true;
                 });
     }
 }
