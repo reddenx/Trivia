@@ -10,7 +10,18 @@ namespace Trivia.Infrastructure.User
     {
         public UserAccount Get(string id)
         {
-            throw new NotImplementedException();
+
+            //var factory = new UserAccountFactory();
+            //var sql = @"";
+            //using (var conn = new MySqlConnection(connectionString))
+            //{
+            //    var data = sql.Execute<DataBinding>();
+            //    var obj = factory.Hydrate(data.id, data.username);
+            //}
+
+
+
+                throw new NotImplementedException();
         }
 
         public UserAccount GetByUsername(string username)

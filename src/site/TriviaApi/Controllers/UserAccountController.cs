@@ -38,7 +38,6 @@ namespace TriviaApi.Controllers
                 case UserAccountService.GetAccountResult.Errors.Technical:
                 default:
                     return StatusCode(500);
-                    
             }
 
             //only admins can get users other than themselves

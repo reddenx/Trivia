@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Trivia.Infrastructure.User.Dtos;
 using TriviaApi.Security;
 
 namespace TriviaApi.Controllers
@@ -13,7 +14,29 @@ namespace TriviaApi.Controllers
     [Route("api/auth")]
     public class AuthController : Controller
     {
-        [HttpPost("auth/login")]
+
+        public class UserAuthDto
+        { 
+            public string AccountId { get; set; }
+            public string Username { get; set; }
+            public string[] Roles { get; set; }
+        }
+        [HttpGet("")]
+        [Authorize(AuthPolicies.Authenticated)]
+        [ProducesResponseType(200, Type = typeof(UserAccountDto))]
+        public IActionResult GetCurrentAuthdUser([FromBody] LoginInputDto input)
+        {
+            var user = this.GetUserContext();
+            return Ok(new UserAuthDto()
+            { 
+                AccountId = user.AccountId,
+                Username = user.Username,
+                Roles = user.Roles
+            });
+        }
+
+
+        [HttpPost("login")]
         [ProducesResponseType(204)]
         [ProducesResponseType(401)]
         public async Task<IActionResult> Authenticate([FromBody]LoginInputDto input)
@@ -59,7 +82,7 @@ namespace TriviaApi.Controllers
             public string Password { get; set; }
         }
 
-        [HttpPost("auth/logout")]
+        [HttpPost("logout")]
         [Authorize(AuthPolicies.Authenticated)]
         [ProducesResponseType(204)]
         [ProducesResponseType(401)]

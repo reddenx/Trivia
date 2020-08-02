@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Trivia.Core.User.Infrastructure;
 using TriviaApi.Security;
 
 namespace TriviaApi.AppStart
@@ -13,7 +14,6 @@ namespace TriviaApi.AppStart
     {
         public static void RegisterApplicationDependencies(IServiceCollection services, IConfiguration configuration)
         {
-
         }
 
         //probably extract later to somewhere else /shrug
