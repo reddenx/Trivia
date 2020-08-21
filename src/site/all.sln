@@ -1,15 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TriviaApi", "TriviaApi\TriviaApi.csproj", "{A054B066-1657-4A0C-A049-20C83CB965B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trivia.Core", "Trivia.Core\Trivia.Core.csproj", "{0EF02F5A-0001-41C3-BB53-940424DD0358}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trivia.Core", "Trivia.Core\Trivia.Core.csproj", "{0EF02F5A-0001-41C3-BB53-940424DD0358}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trivia.Infrastructure", "Trivia.Infrastructure\Trivia.Infrastructure.csproj", "{A73D4AAF-DB2B-4A0D-8303-4B39B677AD50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trivia.Infrastructure", "Trivia.Infrastructure\Trivia.Infrastructure.csproj", "{A73D4AAF-DB2B-4A0D-8303-4B39B677AD50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trivia.Application", "Trivia.Application\Trivia.Application.csproj", "{9BB6CD52-CF0D-4514-A42D-8BA27982A42C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trivia.Application", "Trivia.Application\Trivia.Application.csproj", "{9BB6CD52-CF0D-4514-A42D-8BA27982A42C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E8D675AD-A6F6-4B97-878C-B19BB2111CB9}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
