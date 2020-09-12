@@ -1,18 +1,18 @@
 # Phase 0 Design (MVP)
 ## User Stories
 
-- [ ] test checkbox
-
 1. System
-    1. As a user I would like to be able to participate via a mobile device or pc.
+    1. [x] As a user I would like to be able to participate via a mobile device or pc.
 
 2. Account
-    1. As a player I would like to play without creating an account.
-    2. As a player I would like to give a username to use when playing.
-    3. As a user I would like the site to remember me and auto log me in.
-    4. As a user when I log in I would like to be able to see current stats about my quizzes.
-    5. As a user I would like the site to allow me to login
-    6. As a user I would like to see stats about how well I answer questions related to a tag.
+    1. [x] As a player I would like to play without creating an account.
+    2. [x] As a player I would like to give a username to use when playing.
+    3. [x] As a user I would like the site to remember me and auto log me in.
+    4. [x] As a user when I log in I would like to be able to see current stats about my quizzes.
+    5. [x] As a user I would like the site to allow me to login
+    6. [x] As a user I would like to see stats about how well I answer questions related to a tag.
+    6. [ ] As a user without an account, I would like to switch to another device using some sort of code thing.
+    7. [ ] As a user, I would like a "trust score" to prevent spammy accounts that can abuse reporting tools
 
 3. Game
     1. Create/Host Setup:
@@ -53,7 +53,18 @@
         4. As a user I would like to be able to tag questions for categorization later. (maybe only hosts have this ability?)
 
 ## Requirements
-- Account
+1. Account
+    1. Instance Accounts
+        1. Set username (US 2.2)
+        2. Auto login/relog on refresh (US 2.3)
+        3. Track all stats on questions/answers in past games for user (2.4)
+    2. Permanent Accounts
+        1. Auto login/remember me (2.3)
+        2. Track all stats on questions/answers in past games for user (2.4)
+        3. Login with Email & Password (2.5)
+    3. Login portal will be available by web (US 1.1)
+
+
 - System
 - Game
     - TODO needs a full narrative before requirements can be made
@@ -62,9 +73,13 @@
 ### Front-end
 ### Back-end
 ### Data
+
 ## Infrastructure
+
 ## Deployment
+
 ## Testing (maybe)
+
 ## Terminology
 - User: anyone using the system
 - Player: non host user in a game
