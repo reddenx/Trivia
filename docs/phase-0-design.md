@@ -17,16 +17,16 @@
 
 3. Game
     1. Create/Host Setup:
-        1. [ ] As a host I would like to be able to load a previous quiz once logged in.
-        2. [ ] As a host I would like to save a set up quiz to my account.
-        3. [ ] As a host setting up a game I would like to be able to filter questions from the pool by tags.
-        4. [ ] As a host setting up a game I would like to be able to pull questions from a pool.
-        5. [ ] As a host when creating a quiz would like to be able to set the question, the answer, if it has a time limit, what that time limit is and the total point value.
-        6. [ ] As a host I would like to be able to create a new quiz.
+        1. [x] As a host I would like to be able to load a previous quiz once logged in.
+        2. [x] As a host I would like to save a set up quiz to my account.
+        3. [x] As a host setting up a game I would like to be able to filter questions from the pool by tags.
+        4. [x] As a host setting up a game I would like to be able to pull questions from a pool.
+        5. [x] As a host when creating a quiz would like to be able to set the question, the answer, if it has a time limit, what that time limit is and the total point value.
+        6. [x] As a host I would like to be able to create a new quiz.
 
     2. Initiating Game
-        1. [ ] As a player I would like to be able to join a quiz via a room code.
-        2. [ ] As a player I would like to be able to join a current quiz via link.
+        1. [x] As a player I would like to be able to join a quiz via a room code.
+        2. [x] As a player I would like to be able to join a current quiz via link.
 
     3. Chat
         1. [ ] As a user I would like to be able to chat with other players post game.
@@ -34,13 +34,13 @@
         3. [ ] As a host I would like to enable/disable chat for the entire game.
 
     4. Gameplay
-        1. [ ] As a host I would like to be able to manually move to the next question.
-        2. [ ] As a host I would like to be able to hide or display the current scores for the players.
-        3. [ ] As a host I would like to be able to see a current score for all the players.
-        4. [ ] As a host I would like to be able to give partial credit to an answer (points?).
-        5. [ ] As a host I would like to manually review questions that aren't determined 100% correct by the application.
-        6. [ ] As a player I would like to be able to answer a quiz question.
-        7. [ ] As a user I would like a Presentation View (what the users would see during broadcast)
+        1. [x] As a host I would like to be able to manually move to the next question.
+        2. [x] As a host I would like to be able to hide or display the current scores for the players.
+        3. [x] As a host I would like to be able to see a current score for all the players.
+        4. [x] As a host I would like to be able to give partial credit to an answer (points?).
+        5. [x] As a host I would like to manually review questions that aren't determined 100% correct by the application.
+        6. [x] As a player I would like to be able to answer a quiz question.
+        7. [x] As a user I would like a Presentation View (what the users would see during broadcast)
 
 4. Trivia Question Management
     1. Creation
@@ -54,7 +54,7 @@
         3. [x] As a host I would like answers I decide are correct to be added to possible correct answers for the question.
         4. [x] As a user I would like to be able to tag questions for categorization later. (maybe only hosts have this ability?)
 
-## Requirements
+## Functional Requirements
 1. Account
     1. Instance Accounts
         1. Set username (US 2.2)
@@ -93,19 +93,35 @@
         1. (stretch) Questions track previous answers from players
         2. (stretch) Questions track users that have viewed questions before (through gameplay or host mechanics)
     7. (stretch) A Question can be rated by users (keep to a generic float format 0 to 1)
-    8. A question can have tags? associated with it for categorization
+    8. A question can have tags? associated with it for categorization (3.1.3)
 
 3. Gameplay
-    1. Luke's Game
-        1. 
-    
+    1. Game
+        1. A Game is persistent (3.1.1, 3.1.2)
+        2. A Game can be marked as ready to play 
+        3. (stretch) A Game can be copied from one user to another if they want to edit it
+        4. (stretch) A Game can be marked public/private by its author
+        5. During game creation, have Questions searchable by Tags
+        6. When associating a Question with a Game (a GameQuestion) can have values for time, "point value" etc. (3.1.5)
+    2. Session
+        1. A Session has a set Host
+        2. A Session is created from a Game
+        3. A Session is Joinable by Players (SessionPlayer) (3.2.1)
+        4. A Session can be joined via Simple URL (3.2.2)
+        5. A Session can be joined with a Code (3.2.2)
+        6. A SessionPlayer Has a Score
+        7. A Host determines a SessionPlayer's score (3.4.5)
+        8. SessionPlayer's Score can (should) be associated with a GameQuestion (3.4.5)
+        9. A Session keeps track of SessionPlayer's Answers to GameQuestions
+    3. (stretch) Chat
+        - TBD
 
+## UX
+### Luke's Game
 
+- "Luke's Game"
+    - NEXT TIME
 
-- Game
-    - TODO needs a full narrative before requirements can be made
-
-- Generic
 
 ## Components
 ### Front-end
@@ -122,3 +138,7 @@
 - User: anyone using the system
 - Player: non host user in a game
 - Host: user running a game
+- GameType: "Luke's Game" "jeapardy" "Price is Right"
+- Game: an instance of a GameType that has selected questions.
+- Session: an session of a game that is being run with players and a host
+
