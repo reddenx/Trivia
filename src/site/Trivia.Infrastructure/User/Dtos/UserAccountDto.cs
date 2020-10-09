@@ -6,7 +6,7 @@ namespace Trivia.Infrastructure.User.Dtos
 {
     public class UserAccountDto
     {
-        public string AccountId { get; set; }
+        public Guid Id { get; set; }
         public string Username { get; set; }
     }
 }

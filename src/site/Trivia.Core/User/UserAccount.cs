@@ -6,12 +6,12 @@ namespace Trivia.Core.User
 {
     public class UserAccount
     {
-        public string Id { get; private set; }
+        public Guid Id { get; private set; }
         public string Username { get; private set; }
 
         private const int MIN_USERNAME_LENGTH = 3;
 
-        internal UserAccount(string id)
+        internal UserAccount(Guid id)
         {
             this.Id = id;
         }

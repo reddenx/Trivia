@@ -42,7 +42,7 @@ namespace TriviaApi.Controllers
 
             //only admins can get users other than themselves
             var authUserContext = this.GetUserContext();
-            if (authUserContext.AccountId != result.Account.AccountId
+            if (authUserContext.AccountId != result.Account.Id
                 && !authUserContext.Roles.Contains(AuthRoles.Admin))
             {
                 return StatusCode(403);
@@ -76,7 +76,7 @@ namespace TriviaApi.Controllers
 
             //only admins can get users other than themselves
             var authUserContext = this.GetUserContext();
-            if (authUserContext.AccountId != result.Account.AccountId
+            if (authUserContext.AccountId != result.Account.Id
                 && !authUserContext.Roles.Contains(AuthRoles.Admin))
             {
                 return StatusCode(403);

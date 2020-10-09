@@ -92,7 +92,7 @@ namespace Trivia.Application.Account
         {
             return new UserAccountDto
             {
-                AccountId = account.Id,
+                Id = account.Id,
                 Username = account.Username
             };
         }

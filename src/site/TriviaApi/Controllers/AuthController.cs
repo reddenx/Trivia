@@ -14,13 +14,13 @@ namespace TriviaApi.Controllers
     [Route("api/auth")]
     public class AuthController : Controller
     {
-
         public class UserAuthDto
         { 
-            public string AccountId { get; set; }
+            public Guid AccountId { get; set; }
             public string Username { get; set; }
             public string[] Roles { get; set; }
         }
+
         [HttpGet("")]
         [Authorize(AuthPolicies.Authenticated)]
         [ProducesResponseType(200, Type = typeof(UserAccountDto))]

@@ -24,7 +24,7 @@ namespace TriviaApi.Security
                 return new AuthorizedUser(
                     username: name.Value,
                     roles: roles.Select(r => r.Value).ToArray(),
-                    accountId: accountId.Value);
+                    accountId: Guid.Parse(accountId.Value));
             }
             else
             {
@@ -52,10 +52,10 @@ namespace TriviaApi.Security
         {
             public string Username { get; }
             public string[] Roles { get; }
-            public string AccountId { get; }
+            public Guid AccountId { get; }
 
 
-            public AuthorizedUser(string username, string[] roles, string accountId)
+            public AuthorizedUser(string username, string[] roles, Guid accountId)
             {
                 Username = username;
                 Roles = roles;

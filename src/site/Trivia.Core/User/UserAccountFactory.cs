@@ -8,10 +8,10 @@ namespace Trivia.Core.User
     {
         public UserAccount Create(string username)
         {
-            return new UserAccount(Guid.NewGuid().ToString("N"));
+            return new UserAccount(Guid.NewGuid());
         }
 
-        public UserAccount Hydrate(string id, string username)
+        public UserAccount Hydrate(Guid id, string username)
         {
             var account = new UserAccount(id);
             var valid = account.UpdateUsername(username);
