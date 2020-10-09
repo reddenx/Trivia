@@ -4,18 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Trivia.Application.User;
+using Trivia.Application.Account;
 using Trivia.Infrastructure.User.Dtos;
 using TriviaApi.Security;
 
 namespace TriviaApi.Controllers
 {
     [Route("api/accounts")]
-    public class UserAccountController : Controller
+    public class AccountController : Controller
     {
-        private readonly UserAccountService _accountService;
+        private readonly AccountService _accountService;
 
-        public UserAccountController(UserAccountService accountService)
+        public AccountController(AccountService accountService)
         {
             _accountService = accountService;
         }
@@ -33,9 +33,9 @@ namespace TriviaApi.Controllers
             {
                 case null:
                     break;
-                case UserAccountService.GetAccountResult.Errors.NotFound:
+                case AccountService.GetAccountResult.Errors.NotFound:
                     return StatusCode(404);
-                case UserAccountService.GetAccountResult.Errors.Technical:
+                case AccountService.GetAccountResult.Errors.Technical:
                 default:
                     return StatusCode(500);
             }
@@ -66,9 +66,9 @@ namespace TriviaApi.Controllers
             {
                 case null:
                     break;
-                case UserAccountService.GetAccountResult.Errors.NotFound:
+                case AccountService.GetAccountResult.Errors.NotFound:
                     return StatusCode(404);
-                case UserAccountService.GetAccountResult.Errors.Technical:
+                case AccountService.GetAccountResult.Errors.Technical:
                 default:
                     return StatusCode(500);
 
