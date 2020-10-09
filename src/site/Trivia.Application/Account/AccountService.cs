@@ -5,13 +5,13 @@ using Trivia.Core.User;
 using Trivia.Core.User.Infrastructure;
 using Trivia.Infrastructure.User.Dtos;
 
-namespace Trivia.Application.User
+namespace Trivia.Application.Account
 {
-    public class UserAccountService
+    public class AccountService
     {
         private readonly IUserAccountRepository _repo;
 
-        public UserAccountService(IUserAccountRepository repo)
+        public AccountService(IUserAccountRepository repo)
         {
             _repo = repo;
         }

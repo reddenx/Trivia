@@ -24,7 +24,7 @@ namespace TriviaApi.Controllers
         [HttpGet("")]
         [Authorize(AuthPolicies.Authenticated)]
         [ProducesResponseType(200, Type = typeof(UserAccountDto))]
-        public IActionResult GetCurrentAuthdUser([FromBody] LoginInputDto input)
+        public IActionResult GetCurrentAuthdUser()
         {
             var user = this.GetUserContext();
             return Ok(new UserAuthDto()
