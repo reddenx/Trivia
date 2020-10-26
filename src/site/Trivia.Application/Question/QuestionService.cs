@@ -4,14 +4,15 @@ using System.Text;
 using System.Linq;
 using Trivia.Core.Question;
 using Trivia.Infrastructure.Question;
+using Trivia.Core.Question.Infrastructure;
 
 namespace Trivia.Application.Question
 {
     public class QuestionService
     {
-        private readonly QuestionRepository _questionRepo;
+        private readonly IQuestionRepository _questionRepo;
 
-        public QuestionService(QuestionRepository questionRepo)
+        public QuestionService(IQuestionRepository questionRepo)
         {
             _questionRepo = questionRepo;
         }

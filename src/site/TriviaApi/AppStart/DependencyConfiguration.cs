@@ -5,7 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Trivia.Application.Question;
+using Trivia.Core.Question.Infrastructure;
 using Trivia.Core.User.Infrastructure;
+using Trivia.Infrastructure.Question;
 using TriviaApi.Security;
 
 namespace TriviaApi.AppStart
@@ -14,6 +17,9 @@ namespace TriviaApi.AppStart
     {
         public static void RegisterApplicationDependencies(IServiceCollection services, IConfiguration configuration)
         {
+            services.AddSingleton<QuestionService>();
+            services.AddSingleton<IQuestionRepository, QuestionRepository>();
+
         }
 
         //probably extract later to somewhere else /shrug
