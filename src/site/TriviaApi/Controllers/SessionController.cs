@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TriviaApi.Controllers
 {
-    [Route("api/session")]
+    [Route("api/v1/sessions")]
     public class SessionController : Controller
     {
         public class CreateSessionDto
@@ -25,13 +25,13 @@ namespace TriviaApi.Controllers
             public SessionPlayerDto[] Players { get; set; }
 
             public class SessionPlayerDto
-            { 
+            {
                 public int AccountId { get; set; }
                 public string Username { get; set; }
             }
         }
 
-        [HttpGet("api/session/{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetSession([FromRoute] Guid id)
         {
             var session = new SessionDto
@@ -42,7 +42,7 @@ namespace TriviaApi.Controllers
             return StatusCode(200, session);
         }
 
-        [HttpPost("api/session")]
+        [HttpPost("")]
         public IActionResult CreateSession([FromBody] CreateSessionDto session)
         {
             var newSession = new SessionDto()

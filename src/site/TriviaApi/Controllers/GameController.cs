@@ -8,7 +8,7 @@ using TriviaApi.Security;
 
 namespace TriviaApi.Controllers
 {
-    [Route("api/game")]
+    [Route("api/v1/games")]
     public class GameController : Controller
     {
         public class GameDto

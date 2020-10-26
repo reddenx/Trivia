@@ -9,5 +9,6 @@ namespace TriviaApi.Security
     {
         public const string User = "user";
         public const string Admin = "admin";
+        public const string PermanentAccount = "account_holder";
     }
 }

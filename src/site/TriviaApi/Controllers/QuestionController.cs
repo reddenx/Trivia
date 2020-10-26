@@ -4,55 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Trivia.Application.Account;
+using Trivia.Application.Question;
+using Trivia.Infrastructure.Question;
 using TriviaApi.Security;
 
 namespace TriviaApi.Controllers
 {
-    [Route("api/question")]
+    [Route("api/v1/questions")]
     public class QuestionController : Controller
     {
-        public class QuestionDto
+        private readonly QuestionService _questionService;
+
+        public QuestionController(QuestionService questionService)
         {
-            public string[] Tags { get; internal set; }
-            public ReadonlyQuestionDto.AnswersDto[] Answers { get; internal set; }
-            public string Prompt { get; internal set; }
-            public ReadonlyQuestionDto.PromptTypes PromptType { get; internal set; }
+            _questionService = questionService;
         }
-
-        public class ReadonlyQuestionDto
-        {
-            public Guid Id { get; set; }
-
-            public string Prompt { get; set; }
-            public PromptTypes PromptType { get; set; }
-            public string[] Tags { get; set; }
-
-            public AnswersDto[] Answers { get; set; }
-
-
-            public class AnswersDto
-            {
-                public string[] Response { get; set; }
-                public ResponseTypes ResponseType { get; set; }
-
-                public enum ResponseTypes
-                {
-                    SingleTextAnswer,
-                    MultipleChoice,
-                    Drawing,
-                }
-            }
-
-            public enum PromptTypes
-            {
-                Text,
-                Markdown,
-                Url,
-                ImageUrl,
-                VideoUrl,
-            }
-        }
-
 
         [HttpGet("{id}")]
         [Authorize(AuthPolicies.Authenticated)]
@@ -63,19 +30,25 @@ namespace TriviaApi.Controllers
         [ProducesResponseType(500)]
         public IActionResult GetQuestion([FromRoute] Guid id)
         {
-            var question = new ReadonlyQuestionDto
-            {
-                Id = id,
-                Answers = new ReadonlyQuestionDto.AnswersDto[] { },
-                Prompt = "derp",
-                PromptType = ReadonlyQuestionDto.PromptTypes.Text,
-                Tags = new string[] { }
-            };
+            var userContext = this.GetUserContext();
+            var result = _questionService.GetQuestion(id, userContext.AccountId);
 
-            return StatusCode(200, question);
+            switch (result.Error)
+            {
+                case QuestionService.GetQuestionResult.Errors.NotFound:
+                    return StatusCode(404);
+                case QuestionService.GetQuestionResult.Errors.Validation:
+                    return StatusCode(400);
+                case null:
+                    return Ok(result.Question);
+                case QuestionService.GetQuestionResult.Errors.Technical:
+                default:
+                    return StatusCode(500);
+            }
         }
 
         [HttpPost("")]
+        [Authorize(AuthPolicies.Authenticated)]
         [ProducesResponseType(200, Type = typeof(ReadonlyQuestionDto))]
         [ProducesResponseType(404)]
         [ProducesResponseType(401)]
@@ -83,16 +56,19 @@ namespace TriviaApi.Controllers
         [ProducesResponseType(500)]
         public IActionResult CreateQuestion([FromBody] QuestionDto question)
         {
-            var newQuestion = new ReadonlyQuestionDto
-            {
-                Id = Guid.NewGuid(),
-                Tags = question.Tags,
-                Answers = question.Answers,
-                Prompt = question.Prompt,
-                PromptType = question.PromptType
-            };
+            var userContext = this.GetUserContext();
+            var result = _questionService.CreateQuestion(question, userContext.AccountId);
 
-            return StatusCode(200, newQuestion);
+            switch (result.Error)
+            {
+                case QuestionService.CreateQuestionResult.Errors.Validation:
+                    return StatusCode(400);
+                case null:
+                    return Ok(result.Question);
+                case QuestionService.CreateQuestionResult.Errors.Technical:
+                default:
+                    return StatusCode(500);
+            }
         }
 
         [HttpPut("{id}")]
@@ -103,16 +79,21 @@ namespace TriviaApi.Controllers
         [ProducesResponseType(500)]
         public IActionResult UpdateQuestion([FromRoute] Guid id, [FromBody] QuestionDto question)
         {
-            var updatedQuestion = new ReadonlyQuestionDto
-            {
-                Id = id,
-                Answers = question.Answers,
-                Prompt = question.Prompt,
-                PromptType = question.PromptType,
-                Tags = question.Tags
-            };
+            var userContext = this.GetUserContext();
+            var result = _questionService.UpdateQuestion(id, question, userContext.AccountId);
 
-            return StatusCode(200, updatedQuestion);
+            switch (result.Error)
+            {
+                case QuestionService.UpdateQuestionResult.Errors.NotFound:
+                    return StatusCode(404);
+                case QuestionService.UpdateQuestionResult.Errors.Validation:
+                    return StatusCode(400);
+                case null:
+                    return Ok(result.Question);
+                case QuestionService.UpdateQuestionResult.Errors.Technical:
+                default:
+                    return StatusCode(500);
+            }
         }
     }
 }

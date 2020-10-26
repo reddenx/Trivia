@@ -10,7 +10,7 @@ using TriviaApi.Security;
 
 namespace TriviaApi.Controllers
 {
-    [Route("api/accounts")]
+    [Route("api/v1/accounts")]
     public class AccountController : Controller
     {
         private readonly AccountService _accountService;

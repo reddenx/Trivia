@@ -11,7 +11,7 @@ using TriviaApi.Security;
 
 namespace TriviaApi.Controllers
 {
-    [Route("api/auth")]
+    [Route("api/v1/auth")]
     public class AuthController : Controller
     {
         public class UserAuthDto

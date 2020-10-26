@@ -47,6 +47,10 @@ namespace TriviaApi.AppStart
                 {
                     policy.RequireRole(AuthRoles.Admin);
                 });
+                options.AddPolicy(AuthPolicies.PermanentAccount, policy =>
+                {
+                    policy.RequireRole(AuthRoles.PermanentAccount);
+                });
             });
         }
     }
