@@ -75,6 +75,7 @@ namespace TriviaApi
             app.UseRouting();
 
             //enables authorization based on routes
+            app.UseAuthentication();
             app.UseAuthorization();
 
             //enables controllers to receive http routing
